@@ -70,7 +70,13 @@ class Amazon {
 
             javascriptExecutor.executeScript("arguments[0].scrollIntoView();", x_path);
             x_path.click();
-            driver.close();
+
+            ArrayList<String> links=new ArrayList<>(driver.getWindowHandles());
+            driver.switchTo().window(links.get(1));
+
+            Thread.sleep(1000);
+
+           driver.findElement(By.xpath("//button[@id='add-to-ebooks-cart-button']")).click();
 
 
             
